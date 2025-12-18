@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Instagram, Facebook, Linkedin, Youtube } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -12,35 +12,35 @@ export default function Footer() {
               <div className="flex items-center gap-3 mb-4 pb-3 border-b border-brand-beige/40">
                 <div className="w-10 h-10 rounded-full bg-brand-brown/10 flex items-center justify-center">
                   <Phone className="w-5 h-5 text-brand-brown" />
-                </div>
+            </div>
                 <h3 className="font-display text-xl font-semibold text-brand-brown">Telefones</h3>
-              </div>
+          </div>
               <div className="space-y-3 text-sm md:text-base">
                 <div className="pb-3 border-b border-brand-beige/20 last:border-0 last:pb-0">
                   <span className="text-brand-brown font-semibold block mb-0.5">Escritório</span>
                   <a href="tel:+552133289772" className="text-brand-dark-brown/80 hover:text-brand-brown transition-colors">
                     (21) 3328-9772
                   </a>
-                </div>
+            </div>
                 <div className="pb-3 border-b border-brand-beige/20 last:border-0 last:pb-0">
                   <span className="text-brand-brown font-semibold block mb-0.5">Ariane Andrade</span>
                   <a href="tel:+5521981972847" className="text-brand-dark-brown/80 hover:text-brand-brown transition-colors">
-                    (21) 98197-2847
+                (21) 98197-2847
                   </a>
                 </div>
                 <div className="pb-3 border-b border-brand-beige/20 last:border-0 last:pb-0">
                   <span className="text-brand-brown font-semibold block mb-0.5">Atendimento Geral</span>
                   <a href="tel:+5521999293866" className="text-brand-dark-brown/80 hover:text-brand-brown transition-colors">
-                    (21) 99929-3866
+                (21) 99929-3866
                   </a>
                 </div>
                 <div>
                   <span className="text-brand-brown font-semibold block mb-0.5">Assessoria ao Criador</span>
                   <a href="tel:+5531990790604" className="text-brand-dark-brown/80 hover:text-brand-brown transition-colors">
-                    (31) 99079-0604
+                (31) 99079-0604
                   </a>
-                </div>
-              </div>
+            </div>
+          </div>
             </div>
 
             {/* Card E-mail */}
@@ -50,13 +50,13 @@ export default function Footer() {
                   <Mail className="w-5 h-5 text-brand-brown" />
                 </div>
                 <h3 className="font-display text-xl font-semibold text-brand-brown">E-mail</h3>
-              </div>
-              <a
-                href="mailto:contato@arianeandradeassessoria.com.br"
+            </div>
+            <a
+              href="mailto:contato@arianeandradeassessoria.com.br"
                 className="text-sm md:text-base text-brand-dark-brown/80 hover:text-brand-brown transition-colors break-words inline-block"
-              >
-                contato@arianeandradeassessoria.com.br
-              </a>
+            >
+              contato@arianeandradeassessoria.com.br
+            </a>
             </div>
 
             {/* Card Endereço */}
@@ -64,9 +64,9 @@ export default function Footer() {
               <div className="flex items-center gap-3 mb-4 pb-3 border-b border-brand-beige/40">
                 <div className="w-10 h-10 rounded-full bg-brand-brown/10 flex items-center justify-center">
                   <MapPin className="w-5 h-5 text-brand-brown" />
-                </div>
+          </div>
                 <h3 className="font-display text-xl font-semibold text-brand-brown">Endereço</h3>
-              </div>
+        </div>
               <p className="text-sm md:text-base text-brand-dark-brown/80 leading-relaxed">
                 Rua Campo Grande, nº 1014, SL 223<br />
                 Passeio Empresarial<br />
@@ -130,6 +130,53 @@ export default function Footer() {
                 Enviar mensagem
               </button>
             </form>
+          </div>
+        </div>
+
+        {/* Redes Sociais */}
+        <div className="mt-10 pt-8 border-t border-brand-beige/40">
+          <div className="max-w-4xl mx-auto">
+            <h3 className="font-display text-lg md:text-xl font-semibold text-brand-brown text-center mb-4">
+              Siga-nos nas Redes Sociais
+            </h3>
+            <div className="flex items-center justify-center gap-4">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full bg-brand-brown/10 hover:bg-brand-brown text-brand-brown hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-soft-lg"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" strokeWidth={1.5} />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full bg-brand-brown/10 hover:bg-brand-brown text-brand-brown hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-soft-lg"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5" strokeWidth={1.5} />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full bg-brand-brown/10 hover:bg-brand-brown text-brand-brown hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-soft-lg"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" strokeWidth={1.5} />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full bg-brand-brown/10 hover:bg-brand-brown text-brand-brown hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-soft-lg"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-5 h-5" strokeWidth={1.5} />
+              </a>
+            </div>
           </div>
         </div>
       </div>

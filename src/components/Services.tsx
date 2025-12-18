@@ -86,13 +86,20 @@ export default function Services() {
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-beige/50 via-white to-brand-off-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-7 border border-brand-beige/60 depth-effect card-transition hover-lift glow-effect">
-                <div className="w-12 h-12 bg-gradient-to-br from-brand-brown to-brand-olive rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-soft-lg">
-                  <service.icon className="w-6 h-6 text-white transition-transform duration-300 group-hover:scale-110" strokeWidth={1.5} />
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-7 border border-brand-beige/60 depth-effect card-transition hover-lift glow-effect glass-effect-strong group">
+                {/* Borda dourada destacada no hover */}
+                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-brand-olive/80 transition-all duration-500 pointer-events-none" style={{
+                  background: 'linear-gradient(135deg, rgba(160, 137, 106, 0.1), rgba(129, 112, 95, 0.05))',
+                }} />
+                
+                <div className="relative z-10">
+                  <div className="w-12 h-12 bg-gradient-to-br from-brand-brown to-brand-olive rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-soft-lg">
+                    <service.icon className="w-6 h-6 text-white transition-transform duration-300 group-hover:scale-110" strokeWidth={1.5} />
+                  </div>
+                  <p className="text-brand-dark-brown leading-relaxed text-sm md:text-base transition-colors duration-300 group-hover:text-brand-brown">
+                    {service.title}
+                  </p>
                 </div>
-                <p className="text-brand-dark-brown leading-relaxed text-sm md:text-base transition-colors duration-300 group-hover:text-brand-brown">
-                  {service.title}
-                </p>
               </div>
             </div>
           ))}

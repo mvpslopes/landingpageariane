@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
+import Stats from './components/Stats';
 import Diagnostic from './components/Diagnostic';
 import Planning from './components/Planning';
 import Execution from './components/Execution';
 import Clients from './components/Clients';
+import Testimonials from './components/Testimonials';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -65,17 +67,19 @@ function App() {
       )}
 
       <div className={`min-h-screen site-background transition-opacity duration-700 ease-out ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
-        <Hero />
-        <About />
-        <Services />
-        <Diagnostic />
-        <Planning />
-        <Execution />
-        <Clients />
-        <CTA />
-        <Footer />
-        <WhatsAppButton />
-      </div>
+      <Hero />
+      <About />
+      <Services />
+      <Stats />
+      <Diagnostic />
+      <Planning />
+      <Execution />
+      <Clients />
+      <Testimonials />
+      <CTA />
+      <Footer />
+      <WhatsAppButton />
+    </div>
     </>
   );
 }

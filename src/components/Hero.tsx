@@ -1,46 +1,142 @@
-import { ArrowRight, BadgeCheck } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { ArrowRight, BadgeCheck, Menu, X, Users, Award, TrendingUp } from 'lucide-react';
 import logo from '../../logo-ariane-wide.png';
 import heroPhoto from '../../foto-ariane-fundo.JPG';
 import grupoRacaLogo from '../../gruporaca.png';
 
 export default function Hero() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [parallaxOffset, setParallaxOffset] = useState(0);
+  const [clientsCount, setClientsCount] = useState(0);
+  const [yearsCount, setYearsCount] = useState(0);
+  const [confidenceCount, setConfidenceCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.querySelector('section');
+      if (heroSection) {
+        const rect = heroSection.getBoundingClientRect();
+        const offset = Math.max(0, -rect.top) * 0.2;
+        setParallaxOffset(offset);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (hasAnimated) return;
+
+    // Função de easing (ease-out)
+    const easeOutCubic = (t: number): number => {
+      return 1 - Math.pow(1 - t, 3);
+    };
+
+    const animateNumber = (
+      setter: (value: number) => void,
+      target: number,
+      duration: number,
+      delay: number = 0
+    ) => {
+      setTimeout(() => {
+        const startTime = performance.now();
+        
+        const animate = (currentTime: number) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = easeOutCubic(progress);
+          const current = Math.floor(eased * target);
+          
+          setter(current);
+          
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          }
+        };
+        
+        requestAnimationFrame(animate);
+      }, delay);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+            
+            // Animar os números com delay escalonado
+            animateNumber(setClientsCount, 500, 2000, 0);
+            animateNumber(setYearsCount, 15, 2000, 200);
+            animateNumber(setConfidenceCount, 100, 2000, 400);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    return () => {
+      if (heroRef.current) {
+        observer.unobserve(heroRef.current);
+      }
+    };
+  }, [hasAnimated]);
+
   const scrollToContact = () => {
     document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
 
   const scrollToServices = () => {
     document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
 
   const scrollToAbout = () => {
     document.getElementById('sobre')?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
 
   const scrollToPlanning = () => {
     document.getElementById('planejamento')?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
 
   const scrollToExecution = () => {
     document.getElementById('execucao')?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
 
   const scrollToClients = () => {
     document.getElementById('clientes')?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
 
   const scrollToDiagnostic = () => {
     document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden hero-background">
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute -top-16 left-16 w-72 h-72 bg-brand-brown rounded-[40px] blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-olive rounded-full blur-3xl" />
+    <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden hero-background">
+      {/* Formas geométricas animadas flutuantes */}
+      <div className="absolute inset-0 opacity-20 overflow-hidden">
+        <div className="absolute -top-16 left-16 w-72 h-72 bg-brand-brown rounded-[40px] blur-3xl floating-shape" style={{ animationDelay: '0s', animationDuration: '20s' }} />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-olive rounded-full blur-3xl floating-shape" style={{ animationDelay: '2s', animationDuration: '25s' }} />
+        <div className="absolute top-1/2 left-1/4 w-48 h-48 bg-brand-beige rounded-2xl blur-2xl floating-shape" style={{ animationDelay: '4s', animationDuration: '18s' }} />
+        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-brand-olive/60 rounded-full blur-3xl floating-shape" style={{ animationDelay: '6s', animationDuration: '22s' }} />
+        <div className="absolute bottom-1/4 left-1/3 w-40 h-40 bg-brand-brown/50 rounded-[30px] blur-2xl floating-shape" style={{ animationDelay: '8s', animationDuration: '15s' }} />
       </div>
 
       {/* Header flutuante */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 w-full px-4 z-20">
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 w-full px-4 z-30">
         <div className="max-w-6xl mx-auto flex items-center justify-between rounded-full bg-white/80 backdrop-blur-xl border border-white/80 shadow-soft-lg px-4 md:px-6 py-2.5 transition-all duration-300 hover:shadow-soft-lg hover:bg-white/85">
           <div className="flex items-center gap-3 logo-shimmer">
             <img
@@ -50,6 +146,7 @@ export default function Hero() {
             />
           </div>
 
+          {/* Menu Desktop */}
           <div className="hidden md:flex items-center gap-6 text-sm text-brand-dark-brown/80">
             <button
               type="button"
@@ -101,7 +198,78 @@ export default function Hero() {
               Contato
             </button>
           </div>
+
+          {/* Botão Menu Mobile */}
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 rounded-full bg-brand-brown/10 hover:bg-brand-brown/20 transition-colors"
+            aria-label="Menu"
+          >
+            {isMenuOpen ? (
+              <X className="w-6 h-6 text-brand-brown" />
+            ) : (
+              <Menu className="w-6 h-6 text-brand-brown" />
+            )}
+          </button>
         </div>
+
+        {/* Menu Mobile Dropdown */}
+        {isMenuOpen && (
+          <div className="md:hidden mt-2 rounded-2xl bg-white/95 backdrop-blur-xl border border-white/80 shadow-soft-lg overflow-hidden animate-scale-in">
+            <div className="py-2">
+              <button
+                type="button"
+                onClick={scrollToAbout}
+                className="w-full text-left px-6 py-3 text-sm text-brand-dark-brown/80 hover:text-brand-brown hover:bg-brand-beige/30 transition-colors"
+              >
+                Sobre
+              </button>
+              <button
+                type="button"
+                onClick={scrollToServices}
+                className="w-full text-left px-6 py-3 text-sm text-brand-dark-brown/80 hover:text-brand-brown hover:bg-brand-beige/30 transition-colors"
+              >
+                Serviços
+              </button>
+              <button
+                type="button"
+                onClick={scrollToDiagnostic}
+                className="w-full text-left px-6 py-3 text-sm text-brand-dark-brown/80 hover:text-brand-brown hover:bg-brand-beige/30 transition-colors"
+              >
+                Diagnóstico
+              </button>
+              <button
+                type="button"
+                onClick={scrollToPlanning}
+                className="w-full text-left px-6 py-3 text-sm text-brand-dark-brown/80 hover:text-brand-brown hover:bg-brand-beige/30 transition-colors"
+              >
+                Planejamento
+              </button>
+              <button
+                type="button"
+                onClick={scrollToExecution}
+                className="w-full text-left px-6 py-3 text-sm text-brand-dark-brown/80 hover:text-brand-brown hover:bg-brand-beige/30 transition-colors"
+              >
+                Execução
+              </button>
+              <button
+                type="button"
+                onClick={scrollToClients}
+                className="w-full text-left px-6 py-3 text-sm text-brand-dark-brown/80 hover:text-brand-brown hover:bg-brand-beige/30 transition-colors"
+              >
+                Clientes
+              </button>
+              <button
+                type="button"
+                onClick={scrollToContact}
+                className="w-full text-left px-6 py-3 text-sm font-semibold text-brand-brown hover:bg-brand-beige/30 transition-colors"
+              >
+                Contato
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="container mx-auto px-6 py-16 md:py-20 relative z-10">
@@ -115,6 +283,22 @@ export default function Hero() {
               <h1 className="font-display text-4xl md:text-[2.9rem] lg:text-[3.4rem] font-bold text-brand-brown leading-tight">
                 Organização e excelência para o seu criatório
               </h1>
+            </div>
+
+            {/* Badge de Confiança */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-brand-beige/60 shadow-soft">
+                <Users className="w-4 h-4 text-brand-olive" />
+                <span className="text-xs md:text-sm font-semibold text-brand-brown">{clientsCount}+ Clientes</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-brand-beige/60 shadow-soft">
+                <Award className="w-4 h-4 text-brand-olive" />
+                <span className="text-xs md:text-sm font-semibold text-brand-brown">{yearsCount} Anos</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-brand-beige/60 shadow-soft">
+                <TrendingUp className="w-4 h-4 text-brand-olive" />
+                <span className="text-xs md:text-sm font-semibold text-brand-brown">{confidenceCount}% Confiança</span>
+              </div>
             </div>
 
             <p className="text-base md:text-[1.05rem] text-brand-dark-brown/80 leading-relaxed max-w-[34rem]">
@@ -151,6 +335,9 @@ export default function Hero() {
                     src={heroPhoto}
                     alt="Ariane Andrade em atendimento"
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    style={{
+                      transform: `translateY(${parallaxOffset}px)`,
+                    }}
                   />
                 </div>
 
