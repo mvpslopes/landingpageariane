@@ -124,6 +124,16 @@ export default function Hero() {
     setIsMenuOpen(false);
   };
 
+  const scrollToChecklist = () => {
+    document.getElementById('checklist')?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
+
+  const scrollToFAQ = () => {
+    document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
+
   return (
     <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden hero-background">
       {/* Formas geométricas animadas flutuantes */}
@@ -164,10 +174,24 @@ export default function Hero() {
             </button>
             <button
               type="button"
+              onClick={scrollToChecklist}
+              className="relative px-2 py-1 hover:text-brand-brown transition-all duration-300 hover:scale-105 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-brown after:transition-all after:duration-300 hover:after:w-full"
+            >
+              Checklist
+            </button>
+            <button
+              type="button"
               onClick={scrollToDiagnostic}
               className="relative px-2 py-1 hover:text-brand-brown transition-all duration-300 hover:scale-105 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-brown after:transition-all after:duration-300 hover:after:w-full"
             >
               Diagnóstico
+            </button>
+            <button
+              type="button"
+              onClick={scrollToFAQ}
+              className="relative px-2 py-1 hover:text-brand-brown transition-all duration-300 hover:scale-105 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-brown after:transition-all after:duration-300 hover:after:w-full"
+            >
+              FAQ
             </button>
             <button
               type="button"
@@ -234,10 +258,24 @@ export default function Hero() {
               </button>
               <button
                 type="button"
+                onClick={scrollToChecklist}
+                className="w-full text-left px-6 py-3 text-sm text-brand-dark-brown/80 hover:text-brand-brown hover:bg-brand-beige/30 transition-colors"
+              >
+                Checklist
+              </button>
+              <button
+                type="button"
                 onClick={scrollToDiagnostic}
                 className="w-full text-left px-6 py-3 text-sm text-brand-dark-brown/80 hover:text-brand-brown hover:bg-brand-beige/30 transition-colors"
               >
                 Diagnóstico
+              </button>
+              <button
+                type="button"
+                onClick={scrollToFAQ}
+                className="w-full text-left px-6 py-3 text-sm text-brand-dark-brown/80 hover:text-brand-brown hover:bg-brand-beige/30 transition-colors"
+              >
+                FAQ
               </button>
               <button
                 type="button"

@@ -3,11 +3,14 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import Stats from './components/Stats';
+import QuickChecklist from './components/QuickChecklist';
 import Diagnostic from './components/Diagnostic';
 import Planning from './components/Planning';
 import Execution from './components/Execution';
 import Clients from './components/Clients';
 import Testimonials from './components/Testimonials';
+import FAQ from './components/FAQ';
+import Glossary from './components/Glossary';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -71,11 +74,14 @@ function App() {
       <About />
       <Services />
       <Stats />
+      <QuickChecklist />
       <Diagnostic />
       <Planning />
       <Execution />
       <Clients />
       <Testimonials />
+      <FAQ />
+      <Glossary />
       <CTA />
       <Footer />
       <WhatsAppButton />
