@@ -7,6 +7,6 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  // Permite importar arquivos .JPG (maiúsculo) como assets
-  assetsInclude: ['**/*.JPG'],
+  // Permite importar arquivos .JPG e .PNG (maiúsculo) como assets
+  assetsInclude: ['**/*.JPG', '**/*.PNG'],
 });

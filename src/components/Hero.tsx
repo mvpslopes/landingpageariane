@@ -28,8 +28,12 @@ export default function Hero() {
     document.getElementById('clientes')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToDiagnostic = () => {
+    document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-brand-off-white to-brand-beige overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden hero-background">
       <div className="absolute inset-0 opacity-30">
         <div className="absolute -top-16 left-16 w-72 h-72 bg-brand-brown rounded-[40px] blur-3xl" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-olive rounded-full blur-3xl" />
@@ -37,12 +41,12 @@ export default function Hero() {
 
       {/* Header flutuante */}
       <div className="absolute top-4 left-1/2 -translate-x-1/2 w-full px-4 z-20">
-        <div className="max-w-6xl mx-auto flex items-center justify-between rounded-full bg-white/75 backdrop-blur-md border border-white/70 shadow-sm px-4 md:px-6 py-2">
+        <div className="max-w-6xl mx-auto flex items-center justify-between rounded-full bg-white/80 backdrop-blur-xl border border-white/80 shadow-soft-lg px-4 md:px-6 py-2.5 transition-all duration-300 hover:shadow-soft-lg hover:bg-white/85">
           <div className="flex items-center gap-3 logo-shimmer">
             <img
               src={logo}
               alt="Logo Ariane Andrade Assessoria"
-              className="h-7 md:h-9 object-contain"
+              className="h-7 md:h-9 object-contain transition-transform duration-300 hover:scale-105"
             />
           </div>
 
@@ -50,42 +54,49 @@ export default function Hero() {
             <button
               type="button"
               onClick={scrollToAbout}
-              className="hover:text-brand-brown transition-colors"
+              className="relative px-2 py-1 hover:text-brand-brown transition-all duration-300 hover:scale-105 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-brown after:transition-all after:duration-300 hover:after:w-full"
             >
               Sobre
             </button>
             <button
               type="button"
               onClick={scrollToServices}
-              className="hover:text-brand-brown transition-colors"
+              className="relative px-2 py-1 hover:text-brand-brown transition-all duration-300 hover:scale-105 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-brown after:transition-all after:duration-300 hover:after:w-full"
             >
               Serviços
             </button>
             <button
               type="button"
+              onClick={scrollToDiagnostic}
+              className="relative px-2 py-1 hover:text-brand-brown transition-all duration-300 hover:scale-105 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-brown after:transition-all after:duration-300 hover:after:w-full"
+            >
+              Diagnóstico
+            </button>
+            <button
+              type="button"
               onClick={scrollToPlanning}
-              className="hover:text-brand-brown transition-colors"
+              className="relative px-2 py-1 hover:text-brand-brown transition-all duration-300 hover:scale-105 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-brown after:transition-all after:duration-300 hover:after:w-full"
             >
               Planejamento
             </button>
             <button
               type="button"
               onClick={scrollToExecution}
-              className="hover:text-brand-brown transition-colors"
+              className="relative px-2 py-1 hover:text-brand-brown transition-all duration-300 hover:scale-105 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-brown after:transition-all after:duration-300 hover:after:w-full"
             >
               Execução
             </button>
             <button
               type="button"
               onClick={scrollToClients}
-              className="hover:text-brand-brown transition-colors"
+              className="relative px-2 py-1 hover:text-brand-brown transition-all duration-300 hover:scale-105 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-brown after:transition-all after:duration-300 hover:after:w-full"
             >
               Clientes
             </button>
             <button
               type="button"
               onClick={scrollToContact}
-              className="px-4 py-2 rounded-full bg-brand-brown text-white text-xs font-semibold hover:bg-brand-olive transition-colors shadow-sm"
+              className="px-4 py-2 rounded-full bg-brand-brown text-white text-xs font-semibold hover:bg-brand-olive transition-all duration-300 shadow-soft hover:shadow-soft-lg transform hover:scale-105 hover:-translate-y-0.5"
             >
               Contato
             </button>
@@ -114,14 +125,14 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={scrollToContact}
-                className="group px-9 py-4 bg-brand-olive text-white rounded-full font-semibold text-lg hover:bg-brand-brown transition-all duration-300 flex items-center gap-2 shadow-[0_16px_40px_rgba(0,0,0,0.25)] hover:shadow-[0_22px_55px_rgba(0,0,0,0.3)] transform hover:-translate-y-1"
+                className="group px-9 py-4 bg-brand-olive text-white rounded-full font-semibold text-lg hover:bg-brand-brown transition-all duration-300 flex items-center gap-2 shadow-soft-lg hover:shadow-soft-lg transform hover:-translate-y-1.5 hover:scale-105 glow-effect"
               >
                 Fale Conosco
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
               </button>
               <button
                 onClick={scrollToServices}
-                className="px-8 py-4 bg-transparent border border-brand-brown/40 text-brand-brown/90 rounded-full font-medium text-lg hover:bg-brand-brown hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-1"
+                className="px-8 py-4 bg-transparent border-2 border-brand-brown/40 text-brand-brown/90 rounded-full font-medium text-lg hover:bg-brand-brown hover:text-white hover:border-brand-brown transition-all duration-300 shadow-soft hover:shadow-soft-lg transform hover:-translate-y-1.5 hover:scale-105"
               >
                 Conheça Nossos Serviços
               </button>
@@ -133,13 +144,13 @@ export default function Hero() {
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-brand-off-white rounded-3xl -z-10" />
             <div className="absolute -bottom-8 -left-6 w-32 h-32 bg-brand-beige/70 rounded-full blur-xl -z-10" />
 
-            <div className="relative rounded-[32px] bg-white/85 backdrop-blur-md border border-brand-beige/70 shadow-[0_18px_50px_rgba(0,0,0,0.16)] overflow-hidden">
+            <div className="relative rounded-[32px] bg-white/85 backdrop-blur-md border border-brand-beige/70 depth-effect overflow-hidden card-transition hover-lift">
               <div className="flex flex-col h-full">
-                <div className="relative h-72 md:h-80 lg:h-96">
+                <div className="relative h-72 md:h-80 lg:h-96 overflow-hidden">
                   <img
                     src={heroPhoto}
                     alt="Ariane Andrade em atendimento"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   />
                 </div>
 

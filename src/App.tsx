@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
+import Diagnostic from './components/Diagnostic';
 import Planning from './components/Planning';
 import Execution from './components/Execution';
 import Clients from './components/Clients';
@@ -20,6 +21,28 @@ function App() {
     }, 1200);
 
     return () => clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
+    const elements = document.querySelectorAll<HTMLElement>('[data-reveal]');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -41,10 +64,11 @@ function App() {
         </div>
       )}
 
-      <div className={`min-h-screen transition-opacity duration-700 ease-out ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`min-h-screen site-background transition-opacity duration-700 ease-out ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <Hero />
         <About />
         <Services />
+        <Diagnostic />
         <Planning />
         <Execution />
         <Clients />
