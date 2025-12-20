@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { MapPin, Phone, Mail, Instagram, Facebook, Linkedin, Youtube } from 'lucide-react';
+import PrivacyPolicy from './PrivacyPolicy';
 
 export default function Footer() {
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   return (
     <footer id="contato" className="bg-brand-off-white text-brand-dark-brown">
       <div className="container mx-auto px-6 py-14">
@@ -192,9 +195,17 @@ export default function Footer() {
           </p>
           <p className="text-[0.7rem] md:text-xs text-white/60 mt-0.5">
             &copy; {new Date().getFullYear()} Ariane Andrade Assessoria. Todos os direitos reservados.
+            {' '}
+            <button
+              onClick={() => setShowPrivacyPolicy(true)}
+              className="underline hover:text-brand-beige transition-colors"
+            >
+              Política de Privacidade
+            </button>
           </p>
         </div>
       </div>
+      <PrivacyPolicy isOpen={showPrivacyPolicy} onClose={() => setShowPrivacyPolicy(false)} />
     </footer>
   );
 }
